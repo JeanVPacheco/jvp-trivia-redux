@@ -2,8 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   questions: [],
-  difficulty: 'medium',
-  numberOfQ: 5,
+  settings: {
+    difficulty: 'medium',
+    numberOfQ: 5
+  },
   currentQ: 0,
   status: 'idle',
   username: '',
@@ -12,8 +14,9 @@ const initialState = {
 
 export const fetchQuestions = createAsyncThunk('game/fetchQuestions', async (arg, { getState }) => {
   const state = getState();
+  console.log(state.game.settings.numberOfQ, state.game.settings.difficulty);
   const response = await fetch(
-    `https://opentdb.com/api.php?amount=${state.game.numberOfQ}&difficulty=${state.game.difficulty}&token=${state.setup.token}`
+    `https://opentdb.com/api.php?amount=${state.game.settings.numberOfQ}&difficulty=${state.game.settings.difficulty}&token=${state.setup.token}`
   );
   const { results } = await response.json();
   return results;
@@ -26,6 +29,12 @@ const gameSlice = createSlice({
     usernameRegister(state, action) {
       const { username } = action.payload;
       state.username = username;
+    },
+    changeSettings(state, action) {
+      const { gameDiff, gameNQ } = action.payload;
+      state.settings.difficulty = gameDiff;
+      state.settings.numberOfQ = gameNQ;
+      state.status = 'idle';
     }
   },
   extraReducers(builder) {
@@ -34,7 +43,7 @@ const gameSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchQuestions.fulfilled, (state, action) => {
-        state.questions = state.questions.concat(action.payload);
+        state.questions = action.payload;
         state.status = 'succeeded';
       })
       .addCase(fetchQuestions.rejected, (state, action) => {
@@ -44,8 +53,10 @@ const gameSlice = createSlice({
   }
 });
 
-export const { usernameRegister } = gameSlice.actions;
+export const { usernameRegister, changeSettings } = gameSlice.actions;
 
 export default gameSlice.reducer;
 
 export const selectEveryQuestion = (state) => state.game.questions;
+export const selectGameSettings = (state) => state.game.settings;
+export const selectCurrentPlayer = (state) => state.game.username;
