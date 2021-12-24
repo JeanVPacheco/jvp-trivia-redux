@@ -5,7 +5,9 @@ const initialState = {
   difficulty: 'medium',
   numberOfQ: 5,
   currentQ: 0,
-  status: 'idle'
+  status: 'idle',
+  username: '',
+  points: 0
 };
 
 export const fetchQuestions = createAsyncThunk('game/fetchQuestions', async (arg, { getState }) => {
@@ -20,7 +22,12 @@ export const fetchQuestions = createAsyncThunk('game/fetchQuestions', async (arg
 const gameSlice = createSlice({
   name: 'game',
   initialState,
-  reducers: {},
+  reducers: {
+    usernameRegister(state, action) {
+      const { username } = action.payload;
+      state.username = username;
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchQuestions.pending, (state) => {
@@ -36,6 +43,8 @@ const gameSlice = createSlice({
       });
   }
 });
+
+export const { usernameRegister } = gameSlice.actions;
 
 export default gameSlice.reducer;
 
