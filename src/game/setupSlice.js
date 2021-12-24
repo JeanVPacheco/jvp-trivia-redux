@@ -15,7 +15,6 @@ const setupSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(fetchToken.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.token = action.payload;
     });
   }
