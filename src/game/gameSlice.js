@@ -8,7 +8,7 @@ const initialState = {
   },
   status: 'idle',
   username: '',
-  points: 0
+  score: 0
 };
 
 export const fetchQuestions = createAsyncThunk('game/fetchQuestions', async (arg, { getState }) => {
@@ -36,12 +36,12 @@ const gameSlice = createSlice({
     },
     addPoints(state, action) {
       const { sumPoints } = action.payload;
-      state.points += sumPoints;
+      state.score += sumPoints;
     },
     resetGame(state) {
       state.questions = [];
       state.status = 'idle';
-      state.points = 0;
+      state.score = 0;
     }
   },
   extraReducers(builder) {
@@ -68,3 +68,4 @@ export const selectEveryQuestion = (state) => state.game.questions;
 export const selectGameSettings = (state) => state.game.settings;
 export const selectCurrentPlayer = (state) => state.game.username;
 export const selectCurrentDifficulty = (state) => state.game.settings.difficulty;
+export const selectCurrentScore = (state) => state.game.score;

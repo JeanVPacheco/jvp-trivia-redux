@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { fetchQuestions, resetGame, selectEveryQuestion } from './gameSlice';
+import { fetchQuestions, resetGame, selectCurrentScore, selectEveryQuestion } from './gameSlice';
 import SingleQuestion from './SingleQuestion';
 
 export const Questions = () => {
@@ -10,6 +10,7 @@ export const Questions = () => {
 
   const questionsStatus = useSelector((state) => state.game.status);
   const error = useSelector((state) => state.game.error);
+  const score = useSelector(selectCurrentScore);
 
   const [currentQ, setCurrentQ] = useState(0);
   const [disableB, setDisableB] = useState(true);
@@ -41,6 +42,7 @@ export const Questions = () => {
   return (
     <>
       <h1>Jogo:</h1>
+      <h1>Score: {score}</h1>
       {questionsStatus === 'succeeded' ? pageContent[currentQ] : pageContent}
       <button type="button" disabled={disableB} onClick={setNextQuestion}>
         Next Question
