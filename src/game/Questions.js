@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchQuestions, resetGame, selectCurrentScore, selectEveryQuestion } from './gameSlice';
 import SingleQuestion from './SingleQuestion';
 
@@ -39,14 +40,24 @@ export const Questions = () => {
     pageContent = <p>{error}</p>;
   }
 
+  const nextQButton = (
+    <button type="button" disabled={disableB} onClick={setNextQuestion}>
+      Next Question
+    </button>
+  );
+
+  const finishGameButton = (
+    <Link to="/">
+      <button type="button">Finish Game</button>
+    </Link>
+  );
+
   return (
     <>
       <h1>Jogo:</h1>
       <h1>Score: {score}</h1>
       {questionsStatus === 'succeeded' ? pageContent[currentQ] : pageContent}
-      <button type="button" disabled={disableB} onClick={setNextQuestion}>
-        Next Question
-      </button>
+      {currentQ === questions.length - 1 ? finishGameButton : nextQButton}
     </>
   );
 };
