@@ -37,16 +37,14 @@ const SingleQuestion = ({ question, disable }) => {
           sumPoints = 1 * seconds;
           break;
         case 'medium':
-          sumPoints = sumPoints * 2 * seconds;
+          sumPoints = 2 * seconds;
           break;
         case 'hard':
-          sumPoints = sumPoints * 3 * seconds;
+          sumPoints = 3 * seconds;
           break;
         default:
           break;
       }
-      console.log(sumPoints);
-      console.log(typeof seconds);
       dispatch(addPoints({ sumPoints }));
     }
     pause();
