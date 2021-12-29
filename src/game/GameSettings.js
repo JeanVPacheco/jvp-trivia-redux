@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Header } from '../modules/Header';
 import { changeSettings, selectCurrentPlayer, selectGameSettings } from './gameSlice';
 
 export const GameSettings = () => {
@@ -15,12 +16,16 @@ export const GameSettings = () => {
 
   const canAdvance = Boolean(gameNQ) && Boolean(gameDiff);
 
-  const difficulties = ['easy', 'medium', 'hard'];
+  const difficulties = [
+    ['Easy', 'easy'],
+    ['Medium', 'medium'],
+    ['Hard', 'hard']
+  ];
   const qAmount = ['5', '7', '10'];
 
   const difficultyOptions = difficulties.map((d) => (
-    <option key={d} value={d}>
-      {d}
+    <option key={d[1]} value={d[1]}>
+      {d[0]}
     </option>
   ));
 
@@ -36,31 +41,48 @@ export const GameSettings = () => {
 
   const playAsButton = (
     <Link to="/game">
-      <button type="button" disabled={!canAdvance} onClick={startGame}>
+      <button type="button" disabled={!canAdvance} onClick={startGame} className="settings-button">
         {`Play as ${useSelector(selectCurrentPlayer)}`}
       </button>
     </Link>
   );
 
   return (
-    <div>
-      <h1>Settings</h1>
-      <h2>Difficulty:</h2>
-      <select id="diffSetting" value={gameDiff} onChange={onDiffChange}>
-        <option value=""></option>
-        {difficultyOptions}
-      </select>
-      <h2>Number of questions:</h2>
-      <select id="qAmountSetting" value={gameNQ} onChange={onGameNQChange}>
-        <option value=""></option>
-        {qAmountOptions}
-      </select>
-      {useSelector(selectCurrentPlayer) ? playAsButton : null}
-      <Link to="/">
-        <button type="button" disabled={!canAdvance} onClick={startGame}>
-          {useSelector(selectCurrentPlayer) ? 'Change player' : 'Back to homepage'}
-        </button>
-      </Link>
+    <div className="game-container">
+      <Header />
+      <div className="settings-container">
+        <h1>Settings</h1>
+        <h2>Difficulty:</h2>
+        <select
+          id="diffSetting"
+          value={gameDiff}
+          onChange={onDiffChange}
+          className="settins-select">
+          <option value=""></option>
+          {difficultyOptions}
+        </select>
+        <h2>Number of questions:</h2>
+        <select
+          id="qAmountSetting"
+          value={gameNQ}
+          onChange={onGameNQChange}
+          className="settins-select">
+          <option value=""></option>
+          {qAmountOptions}
+        </select>
+        <div className="settings-buttons-container">
+          {useSelector(selectCurrentPlayer) ? playAsButton : null}
+          <Link to="/">
+            <button
+              type="button"
+              disabled={!canAdvance}
+              onClick={startGame}
+              className="settings-button">
+              {useSelector(selectCurrentPlayer) ? 'Change player' : 'Back to homepage'}
+            </button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

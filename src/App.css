@@ -16,6 +16,20 @@ body {
   background-color: rgb(0,254,130);
 }
 
+.finish-game {
+  width: 90%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.game-bottom-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .game-container {
   height: 640px;
   width: 360px;
@@ -23,6 +37,11 @@ body {
   border-radius: 3%;
   box-shadow: 0 0 2em rgb(37, 37, 37);
   overflow: hidden;
+}
+
+.game-container h1 {
+  margin: 10px 0 5px 0;
+  color: rgb(0,254,130);
 }
 
 .game-container h2 {
@@ -35,10 +54,33 @@ body {
   font-size: 3em;
 }
 
+/* header {
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(109, 0, 119);
+  justify-content: space-evenly;
+  align-content: center;
+} */
+
+.header-logo {
+  height: 15%;
+  display: flex;
+  background-color: rgb(109, 0, 119);
+  justify-content: center;
+  align-items: center;
+  font-size: 55px;
+  font-weight: 800;
+  color: rgb(0,254,130);
+}
 input {
   color: white;
   font-size: 20px;
   margin: 10px 0 5px 0;
+}
+
+.lightbulb-header {
+  height: 55px;
 }
 
 .lightbulb-image {
@@ -80,7 +122,7 @@ input {
 .login-input {
   background-color: rgb(56,0,61);
   border-style: none;
-  width: 70%;
+  width: 80%;
   border-bottom: 3px solid rgb(109, 0, 119);
   margin-top: 10px;
 }
@@ -94,7 +136,7 @@ input {
 }
 
 .login-settings-container a {
-  width: 70%;
+  width: 80%;
   margin: 5px 0 5px 0;
 }
 
@@ -115,4 +157,202 @@ input {
   flex-direction: column;
   align-items: center;
   color: rgb(0,254,130);
+}
+
+.question-answers {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 60%;
+}
+
+.question-category {
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+.question-option {
+  display: inline-block;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+  text-decoration: none;
+  background: rgb(0,254,130);
+  color: rgb(56,0,61);
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, 
+              transform 150ms ease;
+  width: 100%;
+  font-weight: 600;
+  height: 25%;
+  font-size: 17px;
+}
+
+.question-option:hover,
+.question-option:focus {
+  background: rgb(1, 156, 81);
+}
+
+.question-option:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+.question-option:active {
+  transform: scale(0.99);
+}
+
+.question-option:disabled {
+  opacity: 30%;
+}
+
+.question-finish {
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 5px 0;
+  text-decoration: none;
+  background: rgb(0,254,130);
+  color: rgb(56,0,61);
+  cursor: pointer;
+  text-align: center;
+  font-size: 20px;
+  transition: background 250ms ease-in-out, 
+              transform 150ms ease;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.question-finish:hover,
+.question-finish:focus {
+  background: rgb(1, 156, 81);
+}
+
+.question-finish:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+.question-finish:active {
+  transform: scale(0.99);
+}
+
+.question-finish:disabled {
+  opacity: 30%;
+}
+
+.question-next {
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 5px 0;
+  text-decoration: none;
+  background: rgb(0,254,130);
+  color: rgb(56,0,61);
+  cursor: pointer;
+  text-align: center;
+  font-size: 20px;
+  transition: background 250ms ease-in-out, 
+              transform 150ms ease;
+  width: 90%;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.question-next:hover,
+.question-next:focus {
+  background: rgb(1, 156, 81);
+}
+
+.question-next:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+.question-next:active {
+  transform: scale(0.99);
+}
+
+.question-next:disabled {
+  opacity: 30%;
+}
+
+.question-statement {
+  color: rgb(255, 255, 255);
+  font-size: 17px;
+  font-weight: 600;
+  text-align: justify;
+  width: 90%;
+  height: 30%;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.question-whole {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.settings-buttons-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-button {
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 5px 0;
+  text-decoration: none;
+  background: rgb(0,254,130);
+  color: rgb(56,0,61);
+  cursor: pointer;
+  text-align: center;
+  font-size: 20px;
+  transition: background 250ms ease-in-out, 
+              transform 150ms ease;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.settings-button:hover,
+.settings-button:focus {
+  background: rgb(1, 156, 81);
+}
+
+.settings-button:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+.settings-button:active {
+  transform: scale(0.99);
+}
+
+.settings-button:disabled {
+  opacity: 30%;
+}
+
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.settins-select {
+  height: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: rgb(0,254,130);
+  color: rgb(56,0,61);
+  text-align: center;
 }

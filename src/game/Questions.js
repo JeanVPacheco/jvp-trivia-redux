@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchQuestions, resetGame, selectCurrentScore, selectEveryQuestion } from './gameSlice';
+import { Header } from '../modules/Header';
+import { fetchQuestions, resetGame, selectEveryQuestion } from './gameSlice';
 import SingleQuestion from './SingleQuestion';
 
 export const Questions = () => {
@@ -11,7 +12,6 @@ export const Questions = () => {
 
   const questionsStatus = useSelector((state) => state.game.status);
   const error = useSelector((state) => state.game.error);
-  const score = useSelector(selectCurrentScore);
 
   const [currentQ, setCurrentQ] = useState(0);
   const [disableB, setDisableB] = useState(true);
@@ -41,25 +41,26 @@ export const Questions = () => {
   }
 
   const nextQButton = (
-    <button type="button" disabled={disableB} onClick={setNextQuestion}>
+    <button type="button" disabled={disableB} onClick={setNextQuestion} className="question-next">
       Next Question
     </button>
   );
 
   const finishGameButton = (
-    <Link to="/">
-      <button type="button" disabled={disableB}>
+    <Link to="/" className="finish-game">
+      <button type="button" disabled={disableB} className="question-finish">
         Finish Game
       </button>
     </Link>
   );
 
   return (
-    <>
-      <h1>Jogo:</h1>
-      <h1>Score: {score}</h1>
+    <div className="game-container">
+      <Header />
       {questionsStatus === 'succeeded' ? pageContent[currentQ] : pageContent}
-      {currentQ === questions.length - 1 ? finishGameButton : nextQButton}
-    </>
+      <div className="game-bottom-buttons">
+        {currentQ === questions.length - 1 ? finishGameButton : nextQButton}
+      </div>
+    </div>
   );
 };
