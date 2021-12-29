@@ -48,7 +48,9 @@ export const Questions = () => {
 
   const finishGameButton = (
     <Link to="/">
-      <button type="button">Finish Game</button>
+      <button type="button" disabled={disableB}>
+        Finish Game
+      </button>
     </Link>
   );
 
