@@ -52,16 +52,23 @@ const SingleQuestion = ({ question, disable }) => {
   };
 
   const answerOptions = refAnswers.current.map((a) => (
-    <button type="button" key={a} disabled={!disableB} onClick={() => checkAnswer(a)}>
+    <button
+      type="button"
+      key={a}
+      disabled={!disableB}
+      onClick={() => checkAnswer(a)}
+      className="question-option">
       {window.atob(a)}
     </button>
   ));
 
   return (
-    <div>
-      <h1>{window.atob(question.question)}</h1>
-      <h2>Category: {window.atob(question.category)}</h2>
-      {answerOptions}
+    <div className="question-whole">
+      <div className="question-statement">
+        <span>{window.atob(question.question)}</span>
+        <span>{window.atob(question.category)}</span>
+      </div>
+      <div className="question-answers">{answerOptions}</div>
       <h2>Timer: {seconds}</h2>
     </div>
   );
