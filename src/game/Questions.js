@@ -3,7 +3,14 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Header } from '../modules/Header';
-import { fetchQuestions, resetGame, selectEveryQuestion } from './gameSlice';
+import {
+  fetchQuestions,
+  resetGame,
+  selectCurrentPlayer,
+  selectCurrentScore,
+  selectEveryQuestion
+} from './gameSlice';
+import { addToRanking } from './rankingSlice';
 import SingleQuestion from './SingleQuestion';
 
 export const Questions = () => {
@@ -12,6 +19,8 @@ export const Questions = () => {
 
   const questionsStatus = useSelector((state) => state.game.status);
   const error = useSelector((state) => state.game.error);
+  const username = useSelector(selectCurrentPlayer);
+  const score = useSelector(selectCurrentScore);
 
   const [currentQ, setCurrentQ] = useState(0);
   const [disableB, setDisableB] = useState(true);
@@ -28,6 +37,10 @@ export const Questions = () => {
   const setNextQuestion = () => {
     setCurrentQ((prevQ) => prevQ + 1);
     setDisableB((prev) => !prev);
+  };
+
+  const finishGame = () => {
+    dispatch(addToRanking({ username, score }));
   };
 
   if (questionsStatus === 'loading') {
@@ -47,8 +60,8 @@ export const Questions = () => {
   );
 
   const finishGameButton = (
-    <Link to="/" className="finish-game">
-      <button type="button" disabled={disableB} className="question-finish">
+    <Link to="/ranking" className="finish-game">
+      <button type="button" disabled={disableB} className="question-finish" onClick={finishGame}>
         Finish Game
       </button>
     </Link>
