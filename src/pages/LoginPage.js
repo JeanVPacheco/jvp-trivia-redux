@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { usernameRegister } from '../game/gameSlice';
-import lightbulb from '../images/light-bulb.svg';
+import { Header } from '../modules/Header';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -19,10 +19,7 @@ const LoginPage = () => {
 
   return (
     <div className="game-container">
-      <header className="logo-container">
-        <img src={lightbulb} className="lightbulb-image" />
-        <h1 className="game-logo">JVP Trivia</h1>
-      </header>
+      <Header />
       <div className="login-settings-container">
         <div className="login-settings-module">
           <h2>Choose your username</h2>
@@ -50,7 +47,7 @@ const LoginPage = () => {
               Settings
             </button>
           </Link>
-          <Link to="/">
+          <Link to="/ranking">
             <button type="button" className="login-button">
               Ranking
             </button>

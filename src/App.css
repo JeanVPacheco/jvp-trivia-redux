@@ -299,6 +299,37 @@ input {
   align-items: center;
 }
 
+.ranking-card {
+  color: rgb(0,254,130);
+  width: 90%;
+  text-align: center;
+}
+
+.ranking-container {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ranking-container a {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.ranking-container hr {
+  color: rgb(109, 0, 119);
+  background-color: rgb(109, 0, 119);
+  border-color: rgb(109, 0, 119);
+  height: 3px;
+}
+
+.ranking-container h2 {
+  margin: 0;
+}
+
 .settings-buttons-container {
   width: 90%;
   display: flex;
