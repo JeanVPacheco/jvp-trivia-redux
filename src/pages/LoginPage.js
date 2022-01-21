@@ -33,7 +33,7 @@ const LoginPage = () => {
           />
         </div>
         <div className="login-settings-module">
-          <Link to="/game">
+          <Link to="/rules">
             <button
               type="button"
               disabled={!canAdvance}

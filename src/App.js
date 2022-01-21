@@ -5,6 +5,7 @@ import GameSettings from './game/GameSettings';
 import { Questions } from './game/Questions';
 import LoginPage from './pages/LoginPage';
 import RankingPage from './pages/RankingPage';
+import RulesPage from './pages/RulesPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/game" element={<Questions />} />
         <Route exact path="/settings" element={<GameSettings />} />
         <Route exact path="/ranking" element={<RankingPage />} />
+        <Route exact path="/rules" element={<RulesPage />} />
       </Routes>
     </Router>
   );
