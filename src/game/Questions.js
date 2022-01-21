@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReactLoading from 'react-loading';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -45,7 +46,7 @@ export const Questions = () => {
   };
 
   if (questionsStatus === 'loading') {
-    pageContent = <p>Carregando...</p>;
+    pageContent = <ReactLoading type="bubbles" color="#fff" />;
   } else if (questionsStatus === 'succeeded') {
     pageContent = questions.map((question, i) => (
       <SingleQuestion question={question} key={i} disable={[disableB, setDisableB]} />
