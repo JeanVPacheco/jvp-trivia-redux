@@ -41,6 +41,7 @@ export const Questions = () => {
 
   const finishGame = () => {
     dispatch(addToRanking({ username, score }));
+    dispatch(resetGame());
   };
 
   if (questionsStatus === 'loading') {

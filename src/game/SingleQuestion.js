@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPoints, selectCurrentDifficulty } from './gameSlice';
@@ -24,28 +24,31 @@ const SingleQuestion = ({ question, disable }) => {
   const refAnswers = useRef(shuffleArray(everyAnswer));
 
   const [disableB, setDisableB] = disable;
+  const [multiplier, setMultiplier] = useState(1);
 
   useEffect(() => {
     isMount ? null : setDisableB((prev) => !prev);
+    switch (difficulty) {
+      case 'easy':
+        setMultiplier(1);
+        break;
+      case 'medium':
+        setMultiplier(2);
+        break;
+      case 'hard':
+        setMultiplier(3);
+        break;
+      default:
+        break;
+    }
   }, []);
 
   const checkAnswer = (a) => {
     if (a === correctAnswer) {
-      let sumPoints = 1;
-      switch (difficulty) {
-        case 'easy':
-          sumPoints = 1 * seconds;
-          break;
-        case 'medium':
-          sumPoints = 2 * seconds;
-          break;
-        case 'hard':
-          sumPoints = 3 * seconds;
-          break;
-        default:
-          break;
-      }
+      let sumPoints = multiplier * seconds;
       dispatch(addPoints({ sumPoints }));
+    } else {
+      setMultiplier(0);
     }
     pause();
     setDisableB((prev) => !prev);
@@ -57,7 +60,7 @@ const SingleQuestion = ({ question, disable }) => {
       key={a}
       disabled={!disableB}
       onClick={() => checkAnswer(a)}
-      className="question-option">
+      className={`question-option`}>
       {window.atob(a)}
     </button>
   ));
@@ -69,7 +72,9 @@ const SingleQuestion = ({ question, disable }) => {
         <span>{window.atob(question.category)}</span>
       </div>
       <div className="question-answers">{answerOptions}</div>
-      <h2>Timer: {seconds}</h2>
+      <h2>
+        Timer: {seconds} x {multiplier} = {seconds * multiplier} points
+      </h2>
     </div>
   );
 };

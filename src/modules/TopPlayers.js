@@ -18,8 +18,6 @@ const TopPlayers = () => {
   };
 
   const players = useSelector(selectTopPlayers);
-  console.log(players);
-  console.log(players.length);
   const content = players.map((p, i) => playerCard(p, i, players.length));
   return (
     // buscar informacao dos jogadores
