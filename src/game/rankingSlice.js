@@ -1,13 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  players: [
-    { username: 'aogador um', score: 30 },
-    { username: 'aogador dois', score: 30 },
-    { username: 'dogador três', score: 35 },
-    { username: 'eogador quatro', score: 40 },
-    { username: 'fogador cinco', score: 10 }
-  ]
+  players: []
 };
 
 export const rankingSlice = createSlice({

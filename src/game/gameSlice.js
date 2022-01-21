@@ -16,6 +16,9 @@ export const fetchQuestions = createAsyncThunk('game/fetchQuestions', async (arg
   const response = await fetch(
     `https://opentdb.com/api.php?amount=${state.game.settings.numberOfQ}&difficulty=${state.game.settings.difficulty}&token=${state.setup.token}&encode=base64`
   );
+  console.log(
+    `https://opentdb.com/api.php?amount=${state.game.settings.numberOfQ}&difficulty=${state.game.settings.difficulty}&token=${state.setup.token}&encode=base64`
+  );
   const { results } = await response.json();
   return results;
 });
