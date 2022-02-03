@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# 🇺🇸 About | 🇧🇷 Sobre
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a trivia game. It was developed using redux-toolkit, so I could study it.
 
-## Available Scripts
+# 🇺🇸 Hello! Follow the instruction to run the app:
 
-In the project directory, you can run:
+1. Clone this repository to a local directory:
+- $git clone (SSH or HTTTP)
 
-### `npm start`
+## Running locally
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. After cloning, access the directory and install the dependencies needed:
+- $ npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. Now all you have to do is run the app with the command:
+- $ npm start
 
-### `npm test`
+## Running via docker
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. After cloning, access the directory and e run the command to start the docker container (*):
+- $ docker run -v "$PWD:/app" -p 3000:3000 -it node:12 bash
 
-### `npm run build`
+3. Now you are in control of the docker terminal. Go into the "app" directory, install the dependencies needed and run the app:
+- $cd app && npm i && npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Access the port 3000 through your browser:
+- http://localhost:3000/
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+*A little info about the docker flags:
+- -v -> maps the current directory to the container's "/app" directory
+- -p -> links the local 3000 port with the container's 3000 port
+- -it -> creates the container in an interactive mode, do you can use it's terminal
+- node:12 -> docker image used
+- bash -> the terminal used
 
-### `npm run eject`
+# 🇧🇷 Olá! Siga as instruções para rodar o app:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone os arquivos para um diretório em sua máquina:
+- $git clone (endereço SSH ou HTTTP)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Rodando localmente
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Depois de clonar, entre no diretório e instale as dependências necessárias:
+- $ npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Instaladas as dependências, é só rodar o script para montar o aplicativo:
+- $ npm start
 
-## Learn More
+## Rodando via docker
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Depois de clonar, entre no diretório e rode o seguinte comando para iniciar o docker (*):
+- $ docker run -v "$PWD:/app" -p 3000:3000 -it node:12 bash
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Agora que você esta no terminal do container, entre na pasta "app", instale as dependências necessárias e inicie o projeto, que estará rodando na porta 3000:
+- $cd app && npm i && npm start
 
-### Code Splitting
+4. Acesse a porta 3000 a partir do navegador:
+- http://localhost:3000/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+*Explicando um pouco sobre os comandos docker:
+- -v -> mapeia o diretório atual para a pasta "/app" do container
+- -p -> faz um link entre a porta 3000 do computador local com a porta 3000 do container
+- -it -> cria o container de forma interativa, para que seja possível acessar o terminal do container
+- node:12 -> imagem de docker utilizada
+- bash -> o terminal a ser utilizado
