@@ -1,3 +1,5 @@
+# https://jvp-trivia-redux.vercel.app/
+
 # 🇺🇸 About | 🇧🇷 Sobre
 
 This is a trivia game. It was developed using redux-toolkit, so I could study it.
