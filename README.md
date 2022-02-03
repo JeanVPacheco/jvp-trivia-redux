@@ -2,6 +2,8 @@
 
 This is a trivia game. It was developed using redux-toolkit, so I could study it.
 
+Esse é um jogo de perguntas e perguntas. Foi desenvolvido utiliando redux-toolkit, para que pudesse estudá-lo.
+
 # 🇺🇸 Hello! Follow the instruction to run the app:
 
 1. Clone this repository to a local directory:
